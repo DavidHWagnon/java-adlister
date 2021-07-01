@@ -19,6 +19,8 @@
     <title>Profile</title>
 </head>
 <body>
+<%@include file="partials/head.jsp"%>
+    <%@ include file="partials/navbar.jsp"%>
     <h1>Welcome to the profile page!</h1>
 </body>
 </html>

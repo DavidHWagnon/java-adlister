@@ -36,7 +36,8 @@
     <title>Login Page</title>
 </head>
 <body>
-
+    <%@include file="partials/head.jsp"%>
+    <%@ include file="partials/navbar.jsp"%>
     <form method="post" action="/login.jsp">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" value="username" placeholder="Username"><br>
