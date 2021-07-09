@@ -1,6 +1,6 @@
-﻿import java.sql.DriverManager;
+
+import java.sql.DriverManager;
 import com.mysql.cj.jdbc.Driver;
-import javax.servlet.jsp.jstl.core.Config;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +8,15 @@ import java.util.List;
 public class MySQLAdsDao implements Ads{
     private Connection connection;
 
-    public MySQLAdsDao(Config config) throws SQLException {
+    public MySQLAdsDao(Config config){
         try{
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
                     config.getUrl(),
                     config.getUser(),
                     config.getPassword());
-        } catch (SQLException throwables){
-            throwables.printStackTrace();
+        } catch (SQLException error){
+            throw new RuntimeException("Error connecting to the database");
         }
 
     }
@@ -29,7 +29,8 @@ public class MySQLAdsDao implements Ads{
         List<Ad> adList = new ArrayList<>();
         try{
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ads");
+            String showAds = "SELECT * FROM ads";
+            ResultSet rs = stmt.executeQuery(showAds);
             while (rs.next()){
                 adList.add(new Ad(
                         rs.getInt("id"),
