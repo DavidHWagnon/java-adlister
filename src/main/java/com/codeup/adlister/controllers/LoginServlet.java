@@ -22,9 +22,11 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         // TODO: find a record in your database that matches the submitted password
+        String sqlPass = "SELECT * FROM users WHERE name LIKE '%" + password + "%'";
         // TODO: make sure we find a user with that username
+        String sqlUser = "SELECT * FROM users WHERE name LIKE '%" + username + "%'";
         // TODO: check the submitted password against what you have in your database
-        boolean validAttempt = false;
+        boolean validAttempt = password.equals(sqlPass) && username.equals(sqlUser);
 
         if (validAttempt) {
             // TODO: store the logged in user object in the session, instead of just the username
