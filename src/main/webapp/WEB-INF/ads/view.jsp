@@ -12,8 +12,8 @@
 <div class="container">
   <h1>Here Are all the ads!</h1>
   <div class="col-md-12">
-    <h1>${ad.title}</h1>
-    <p>${ad.description}</p>
+    <h1><c:out value = "${ad.title}" /></h1>
+    <p><c:out value = "${ad.description}" /></p>
   </div>
 </div>
 
